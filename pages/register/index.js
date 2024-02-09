@@ -1,8 +1,49 @@
+import { useMutation } from "@/hooks/useMutation";
 import Layout from "@/layout";
+import { useToast } from "@chakra-ui/react";
+import Cookies from "js-cookie";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 
-export default function Register() {
+export default function Login() {
+  const router = useRouter();
+  const toast = useToast();
+  const { mutate } = useMutation();
+  const [payload, setPayload] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const HandleSubmit = async () => {
+    console.log(payload);
+    const response = await mutate({
+      url: "https://paace-f178cafcae7b.nevacloud.io/api/register",
+      payload: payload,
+    });
+    if (!response?.success) {
+      toast({
+        title: "Login Gagal !",
+        description: "Username atau Pasword yang anda masukkan salah",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      toast({
+        title: "Register Berhasil !",
+        description: "Username atau Pasword yang anda masukkan salah",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+      router.push("/login");
+    }
+  };
+
   return (
     <div>
       <Layout>
@@ -19,19 +60,39 @@ export default function Register() {
               <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                 <form>
                   <div className=" text-center  ">
-                    <h1 className="lead fw-bold">Regis dulu gess!</h1>
+                    <h1 className="lead fw-bold">Login dulu gess!</h1>
                     <small className="">
-                      Memasukkan seluruh data untuk mendaftar!
+                      Memasukkan username dan passwor yang telah terdaftar!
                     </small>
                   </div>
                   <div className="divider d-flex align-items-center my-4">
                     {/* <p className="text-center fw-bold mx-3 mb-0">Or</p> */}
                   </div>
                   {/* Email input */}
-                  <div className="form-outline mb-4">
+                  <div className="form-outline mb-3">
+                    <input
+                      type="name"
+                      id="name"
+                      value={payload?.name}
+                      onChange={(event) => {
+                        setPayload({ ...payload, name: event.target.value });
+                      }}
+                      className="form-control form-control-lg"
+                      placeholder="Masukkan nama lengkapmu"
+                    />
+                    <label className="form-label" htmlFor="form3Example3">
+                      Nama
+                    </label>
+                  </div>
+                  {/* Email input */}
+                  <div className="form-outline mb-3">
                     <input
                       type="email"
-                      id="form3Example3"
+                      id="email"
+                      value={payload?.email}
+                      onChange={(event) => {
+                        setPayload({ ...payload, email: event.target.value });
+                      }}
                       className="form-control form-control-lg"
                       placeholder="Enter a valid email address"
                     />
@@ -43,7 +104,14 @@ export default function Register() {
                   <div className="form-outline mb-3">
                     <input
                       type="password"
-                      id="form3Example4"
+                      id="password"
+                      value={payload?.password}
+                      onChange={(event) => {
+                        setPayload({
+                          ...payload,
+                          password: event.target.value,
+                        });
+                      }}
                       className="form-control form-control-lg"
                       placeholder="Enter password"
                     />
@@ -56,6 +124,7 @@ export default function Register() {
                     <button
                       type="button"
                       className="btn btn-primary btn-lg"
+                      onClick={() => HandleSubmit()}
                       style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                     >
                       Login

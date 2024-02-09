@@ -31,10 +31,10 @@ export default function About() {
                         cintai tuhanmu 5 waktu tiap hari"
                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                       </p>
-                      <div className="">
+                      <div className="justify-content-center align-items-center d-flex">
                         <img
                           src="/fadli.jpg"
-                          class="rounded-circle img-fluid "
+                          class="rounded-circle img-fluid text-center"
                           style={{ weight: "20px", height: "200px" }}
                           alt=""
                         />
@@ -132,141 +132,6 @@ export default function About() {
               </div>
             </div>
           </section>
-          {/* <section id="about" class="about">
-            <div class="container" />
-            <div class="row no-gutters">
-              <div
-                class="content col-xl-5 d-flex align-items-stretch"
-                //
-              >
-                <div class="content">
-                  <h3>Voluptatem dignissimos provident quasi</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Duis aute irure dolor in reprehenderit
-                  </p>
-                  <a href="#" class="about-btn">
-                    About us <i class="bx bx-chevron-right"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="col-xl-7 d-flex align-items-stretch"
-                //
-              >
-                <div class="icon-boxes d-flex flex-column justify-content-center">
-                  <div class="row">
-                    <div
-                      class="col-md-6 icon-box"
-                      //
-                      //
-                    >
-                      <i class="bx bx-receipt"></i>
-                      <h4>Corporis voluptates sit</h4>
-                      <p>
-                        Consequuntur sunt aut quasi enim aliquam quae harum
-                        pariatur laboris nisi ut aliquip
-                      </p>
-                    </div>
-                    <div
-                      class="col-md-6 icon-box"
-                      //
-                      // data-aos-delay="200"
-                    >
-                      <i class="bx bx-cube-alt"></i>
-                      <h4>Ullamco laboris nisi</h4>
-                      <p>
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt
-                      </p>
-                    </div>
-                    <div
-                      class="col-md-6 icon-box"
-                      //
-                      //
-                    >
-                      <i class="bx bx-images"></i>
-                      <h4>Labore consequatur</h4>
-                      <p>
-                        Aut suscipit aut cum nemo deleniti aut omnis. Doloribus
-                        ut maiores omnis facere
-                      </p>
-                    </div>
-                    <div
-                      class="col-md-6 icon-box"
-                      //
-                      //
-                    >
-                      <i class="bx bx-shield"></i>
-                      <h4>Beatae veritatis</h4>
-                      <p>
-                        Expedita veritatis consequuntur nihil tempore laudantium
-                        vitae denat pacta
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
-          {/* <section id="clients" class="clients">
-            <div
-              class="container"
-              // data-aos="zoom-in"
-            >
-              <div class="row">
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    src="/img/clients/client-1.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    src="/img/clients/client-2.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    src="/img/clients/client-3.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    src="/img/clients/client-4.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    src="/img/clients/client-5.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    src="/img/clients/client-6.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </section> */}
 
           <section id="features" class="features">
             <div class="container">

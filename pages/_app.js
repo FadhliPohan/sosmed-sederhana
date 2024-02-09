@@ -20,9 +20,9 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      {/* <UserContextProvider> */}
+      <UserContextProvider>
         <Component {...pageProps} />
-      {/* </UserContextProvider> */}
+      </UserContextProvider>
     </ChakraProvider>
   );
 }

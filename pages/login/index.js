@@ -1,8 +1,52 @@
+import { useMutation } from "@/hooks/useMutation";
 import Layout from "@/layout";
+import { useToast } from "@chakra-ui/react";
+import Cookies from "js-cookie";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 
 export default function Login() {
+  const router = useRouter();
+  const toast = useToast();
+  const { mutate } = useMutation();
+  const [payload, setPayload] = useState({
+    email: "",
+    password: "",
+  });
+
+  const HandleSubmit = async () => {
+    console.log(payload);
+    const response = await mutate({
+      url: "https://paace-f178cafcae7b.nevacloud.io/api/login",
+      payload: payload,
+    });
+    if (!response?.success) {
+      toast({
+        title: "Login Gagal !",
+        description: "Username atau Pasword yang anda masukkan salah",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      Cookies.set("user_token", response?.data?.token, {
+        expires: new Date(response?.data?.expires_at),
+        path: "/",
+      });
+      toast({
+        title: "Register Berhasil !",
+        description: "Username atau Pasword yang anda masukkan salah",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+      router.push("/");
+    }
+  };
+
   return (
     <div>
       <Layout>
@@ -31,7 +75,11 @@ export default function Login() {
                   <div className="form-outline mb-4">
                     <input
                       type="email"
-                      id="form3Example3"
+                      id="email"
+                      value={payload?.email}
+                      onChange={(event) => {
+                        setPayload({ ...payload, email: event.target.value });
+                      }}
                       className="form-control form-control-lg"
                       placeholder="Enter a valid email address"
                     />
@@ -43,7 +91,14 @@ export default function Login() {
                   <div className="form-outline mb-3">
                     <input
                       type="password"
-                      id="form3Example4"
+                      id="password"
+                      value={payload?.password}
+                      onChange={(event) => {
+                        setPayload({
+                          ...payload,
+                          password: event.target.value,
+                        });
+                      }}
                       className="form-control form-control-lg"
                       placeholder="Enter password"
                     />
@@ -56,14 +111,15 @@ export default function Login() {
                     <button
                       type="button"
                       className="btn btn-primary btn-lg"
+                      onClick={() => HandleSubmit()}
                       style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                     >
                       Login
                     </button>
                     <p className="small fw-bold mt-2 pt-1 mb-0">
-                      Don't have an account?
+                      Belum punya akun, kuy datfar?&nbsp;
                       <Link href="/register" className="link-danger">
-                        Register
+                        Daftar disini
                       </Link>
                       {/* <Link href="#!" className="link-danger">
                             Register
