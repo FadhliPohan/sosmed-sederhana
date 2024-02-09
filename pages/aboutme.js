@@ -1,23 +1,143 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import Layout from "@/layout";
 import Section from "@/components/main/section";
+import Layout from "@/layout";
+import React from "react";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+export default function About() {
   return (
     <>
       <Layout>
-        <Section />
-        {/* <main id="main">
-          <section id="about" class="about">
+        <br />
+        <main id="main">
+          <section id="testimonials" class="testimonials section-bg">
+            <div class="container">
+              <div class="section-title">
+                <h2>Tentang Saya</h2>
+                <p>
+                  Saya bekerja dibidang Informasi teknologi, memiliki pengalaman
+                  kurang lebih 4 tahun. kesibukan sekarang bekerja untuk membuat
+                  website disalah satu perusahaan, saya memiliki hobi membaca,
+                  makan, dan traveling. udah gitu aja yah .... hehehe :)
+                </p>
+              </div>
+
+              <div class="testimonials-slider swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        "Cintai ususmu minum yakult tiap hari, cintai nenekmu
+                        cabut uban tiap hari, cintai harimu cari uang tiap hari,
+                        cintai tuhanmu 5 waktu tiap hari"
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                      <div className="">
+                        <img
+                          src="/fadli.jpg"
+                          class="rounded-circle img-fluid "
+                          style={{ weight: "20px", height: "200px" }}
+                          alt=""
+                        />
+                      </div>
+
+                      <h3>Muhammad Fadhli Dzil Ikram Pohan</h3>
+                      <h4 className="text-primary">
+                        IQOF | Independent Quality Of Future
+                      </h4>
+                      <h4 className="mb-5">Ceo &amp; Founder</h4>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Export tempor illum tamen malis malis eram quae irure
+                        esse labore quem cillum quid cillum eram malis quorum
+                        velit fore eram velit sunt aliqua noster fugiat irure
+                        amet legam anim culpa.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                      <img
+                        src="/img/testimonials/testimonials-2.jpg"
+                        class="testimonial-img"
+                        alt=""
+                      />
+                      <h3>Sara Wilsson</h3>
+                      <h4>Designer</h4>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Enim nisi quem export duis labore cillum quae magna enim
+                        sint quorum nulla quem veniam duis minim tempor labore
+                        quem eram duis noster aute amet eram fore quis sint
+                        minim.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                      <img
+                        src="/img/testimonials/testimonials-3.jpg"
+                        class="testimonial-img"
+                        alt=""
+                      />
+                      <h3>Jena Karlis</h3>
+                      <h4>Store Owner</h4>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Fugiat enim eram quae cillum dolore dolor amet nulla
+                        culpa multos export minim fugiat minim velit minim dolor
+                        enim duis veniam ipsum anim magna sunt elit fore quem
+                        dolore labore illum veniam.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                      <img
+                        src="/img/testimonials/testimonials-4.jpg"
+                        class="testimonial-img"
+                        alt=""
+                      />
+                      <h3>Matt Brandon</h3>
+                      <h4>Freelancer</h4>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure
+                        aliqua veniam tempor noster veniam enim culpa labore
+                        duis sunt culpa nulla illum cillum fugiat legam esse
+                        veniam culpa fore nisi cillum quid.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                      <img
+                        src="/img/testimonials/testimonials-5.jpg"
+                        class="testimonial-img"
+                        alt=""
+                      />
+                      <h3>John Larson</h3>
+                      <h4>Entrepreneur</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </section>
+          {/* <section id="about" class="about">
             <div class="container" />
             <div class="row no-gutters">
               <div
                 class="content col-xl-5 d-flex align-items-stretch"
-                data-aos="fade-right"
+                //
               >
                 <div class="content">
                   <h3>Voluptatem dignissimos provident quasi</h3>
@@ -33,14 +153,14 @@ export default function Home() {
               </div>
               <div
                 class="col-xl-7 d-flex align-items-stretch"
-                data-aos="fade-left"
+                //
               >
                 <div class="icon-boxes d-flex flex-column justify-content-center">
                   <div class="row">
                     <div
                       class="col-md-6 icon-box"
-                      data-aos="fade-up"
-                      data-aos-delay="100"
+                      //
+                      //
                     >
                       <i class="bx bx-receipt"></i>
                       <h4>Corporis voluptates sit</h4>
@@ -51,8 +171,8 @@ export default function Home() {
                     </div>
                     <div
                       class="col-md-6 icon-box"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
+                      //
+                      // data-aos-delay="200"
                     >
                       <i class="bx bx-cube-alt"></i>
                       <h4>Ullamco laboris nisi</h4>
@@ -63,8 +183,8 @@ export default function Home() {
                     </div>
                     <div
                       class="col-md-6 icon-box"
-                      data-aos="fade-up"
-                      data-aos-delay="300"
+                      //
+                      //
                     >
                       <i class="bx bx-images"></i>
                       <h4>Labore consequatur</h4>
@@ -75,8 +195,8 @@ export default function Home() {
                     </div>
                     <div
                       class="col-md-6 icon-box"
-                      data-aos="fade-up"
-                      data-aos-delay="400"
+                      //
+                      //
                     >
                       <i class="bx bx-shield"></i>
                       <h4>Beatae veritatis</h4>
@@ -89,14 +209,17 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
-          <section id="clients" class="clients">
-            <div class="container" data-aos="zoom-in">
+          {/* <section id="clients" class="clients">
+            <div
+              class="container"
+              // data-aos="zoom-in"
+            >
               <div class="row">
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                   <img
-                    src="@/styles/assets/img/clients/client-1.png"
+                    src="/img/clients/client-1.png"
                     class="img-fluid"
                     alt=""
                   />
@@ -104,7 +227,7 @@ export default function Home() {
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                   <img
-                    src="@/styles/assets/img/clients/client-2.png"
+                    src="/img/clients/client-2.png"
                     class="img-fluid"
                     alt=""
                   />
@@ -112,7 +235,7 @@ export default function Home() {
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                   <img
-                    src="@/styles/assets/img/clients/client-3.png"
+                    src="/img/clients/client-3.png"
                     class="img-fluid"
                     alt=""
                   />
@@ -120,7 +243,7 @@ export default function Home() {
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                   <img
-                    src="@/styles/assets/img/clients/client-4.png"
+                    src="/img/clients/client-4.png"
                     class="img-fluid"
                     alt=""
                   />
@@ -128,7 +251,7 @@ export default function Home() {
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                   <img
-                    src="@/styles/assets/img/clients/client-5.png"
+                    src="/img/clients/client-5.png"
                     class="img-fluid"
                     alt=""
                   />
@@ -136,16 +259,16 @@ export default function Home() {
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                   <img
-                    src="@/styles/assets/img/clients/client-6.png"
+                    src="/img/clients/client-6.png"
                     class="img-fluid"
                     alt=""
                   />
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
-          <section id="features" class="features" data-aos="fade-up">
+          <section id="features" class="features">
             <div class="container">
               <div class="section-title">
                 <h2>Features</h2>
@@ -159,22 +282,10 @@ export default function Home() {
               </div>
 
               <div class="row content">
-                <div
-                  class="col-md-5"
-                  data-aos="fade-right"
-                  data-aos-delay="100"
-                >
-                  <img
-                    src="@/styles/assets/img/features-1.png"
-                    class="img-fluid"
-                    alt=""
-                  />
+                <div class="col-md-5">
+                  <img src="/img/features-1.png" class="img-fluid" alt="" />
                 </div>
-                <div
-                  class="col-md-7 pt-4"
-                  data-aos="fade-left"
-                  data-aos-delay="100"
-                >
+                <div class="col-md-7 pt-4">
                   <h3>
                     Voluptatem dignissimos provident quasi corporis voluptates
                     sit assumenda.
@@ -202,17 +313,10 @@ export default function Home() {
               </div>
 
               <div class="row content">
-                <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
-                  <img
-                    src="@/styles/assets/img/features-2.png"
-                    class="img-fluid"
-                    alt=""
-                  />
+                <div class="col-md-5 order-1 order-md-2">
+                  <img src="/img/features-2.png" class="img-fluid" alt="" />
                 </div>
-                <div
-                  class="col-md-7 pt-5 order-2 order-md-1"
-                  data-aos="fade-right"
-                >
+                <div class="col-md-7 pt-5 order-2 order-md-1">
                   <h3>Corporis temporibus maiores provident</h3>
                   <p class="fst-italic">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -230,14 +334,10 @@ export default function Home() {
               </div>
 
               <div class="row content">
-                <div class="col-md-5" data-aos="fade-right">
-                  <img
-                    src="@/styles/assets/img/features-3.png"
-                    class="img-fluid"
-                    alt=""
-                  />
+                <div class="col-md-5">
+                  <img src="/img/features-3.png" class="img-fluid" alt="" />
                 </div>
-                <div class="col-md-7 pt-5" data-aos="fade-left">
+                <div class="col-md-7 pt-5">
                   <h3>
                     Sunt consequatur ad ut est nulla consectetur reiciendis
                     animi voluptas
@@ -265,17 +365,10 @@ export default function Home() {
               </div>
 
               <div class="row content">
-                <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
-                  <img
-                    src="@/styles/assets/img/features-4.png"
-                    class="img-fluid"
-                    alt=""
-                  />
+                <div class="col-md-5 order-1 order-md-2">
+                  <img src="/img/features-4.png" class="img-fluid" alt="" />
                 </div>
-                <div
-                  class="col-md-7 pt-5 order-2 order-md-1"
-                  data-aos="fade-right"
-                >
+                <div class="col-md-7 pt-5 order-2 order-md-1">
                   <h3>
                     Quas et necessitatibus eaque impedit ipsum animi consequatur
                     incidunt in
@@ -298,12 +391,8 @@ export default function Home() {
           </section>
           <section id="steps" class="steps">
             <div class="container">
-              <div class="row no-gutters" data-aos="fade-up">
-                <div
-                  class="col-lg-4 col-md-6 content-item"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
+              <div class="row no-gutters">
+                <div class="col-lg-4 col-md-6 content-item">
                   <span>01</span>
                   <h4>Lorem Ipsum</h4>
                   <p>
@@ -312,11 +401,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 content-item"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
+                <div class="col-lg-4 col-md-6 content-item">
                   <span>02</span>
                   <h4>Repellat Nihil</h4>
                   <p>
@@ -325,11 +410,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 content-item"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
+                <div class="col-lg-4 col-md-6 content-item">
                   <span>03</span>
                   <h4> Ad ad velit qui</h4>
                   <p>
@@ -338,11 +419,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 content-item"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
+                <div class="col-lg-4 col-md-6 content-item">
                   <span>04</span>
                   <h4>Repellendus molestiae</h4>
                   <p>
@@ -351,11 +428,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 content-item"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
+                <div class="col-lg-4 col-md-6 content-item">
                   <span>05</span>
                   <h4>Sapiente Magnam</h4>
                   <p>
@@ -364,11 +437,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 content-item"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
+                <div class="col-lg-4 col-md-6 content-item">
                   <span>06</span>
                   <h4>Facilis Impedit</h4>
                   <p>
@@ -380,7 +449,7 @@ export default function Home() {
             </div>
           </section>
           <section id="services" class="services">
-            <div class="container" data-aos="fade-up">
+            <div class="container">
               <div class="section-title">
                 <h2>Services</h2>
                 <p>
@@ -393,11 +462,7 @@ export default function Home() {
               </div>
 
               <div class="row">
-                <div
-                  class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                   <div class="icon-box">
                     <div class="icon">
                       <i class="bx bxl-dribbble"></i>
@@ -412,11 +477,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                   <div class="icon-box">
                     <div class="icon">
                       <i class="bx bx-file"></i>
@@ -431,11 +492,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                   <div class="icon-box">
                     <div class="icon">
                       <i class="bx bx-tachometer"></i>
@@ -450,11 +507,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                   <div class="icon-box">
                     <div class="icon">
                       <i class="bx bx-layer"></i>
@@ -472,7 +525,7 @@ export default function Home() {
             </div>
           </section>
           <section id="portfolio" class="portfolio">
-            <div class="container" data-aos="fade-up">
+            <div class="container">
               <div class="section-title">
                 <h2>Portfolio</h2>
                 <p>
@@ -501,7 +554,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-1.jpg"
+                      src="/img/portfolio/portfolio-1.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -510,7 +563,7 @@ export default function Home() {
                       <p>App</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-1.jpg"
+                          href="/img/portfolio/portfolio-1.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="App 1"
@@ -528,7 +581,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-2.jpg"
+                      src="/img/portfolio/portfolio-2.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -537,7 +590,7 @@ export default function Home() {
                       <p>Web</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-2.jpg"
+                          href="/img/portfolio/portfolio-2.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="Web 3"
@@ -555,7 +608,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-3.jpg"
+                      src="/img/portfolio/portfolio-3.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -564,7 +617,7 @@ export default function Home() {
                       <p>App</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-3.jpg"
+                          href="/img/portfolio/portfolio-3.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="App 2"
@@ -582,7 +635,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-4.jpg"
+                      src="/img/portfolio/portfolio-4.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -591,7 +644,7 @@ export default function Home() {
                       <p>Card</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-4.jpg"
+                          href="/img/portfolio/portfolio-4.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="Card 2"
@@ -609,7 +662,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-5.jpg"
+                      src="/img/portfolio/portfolio-5.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -618,7 +671,7 @@ export default function Home() {
                       <p>Web</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-5.jpg"
+                          href="/img/portfolio/portfolio-5.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="Web 2"
@@ -636,7 +689,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-6.jpg"
+                      src="/img/portfolio/portfolio-6.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -645,7 +698,7 @@ export default function Home() {
                       <p>App</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-6.jpg"
+                          href="/img/portfolio/portfolio-6.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="App 3"
@@ -663,7 +716,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-7.jpg"
+                      src="/img/portfolio/portfolio-7.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -672,7 +725,7 @@ export default function Home() {
                       <p>Card</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-7.jpg"
+                          href="/img/portfolio/portfolio-7.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="Card 1"
@@ -690,7 +743,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-8.jpg"
+                      src="/img/portfolio/portfolio-8.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -699,7 +752,7 @@ export default function Home() {
                       <p>Card</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-8.jpg"
+                          href="/img/portfolio/portfolio-8.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="Card 3"
@@ -717,7 +770,7 @@ export default function Home() {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                   <div class="portfolio-wrap">
                     <img
-                      src="@/styles/assets/img/portfolio/portfolio-9.jpg"
+                      src="/img/portfolio/portfolio-9.jpg"
                       class="img-fluid"
                       alt=""
                     />
@@ -726,7 +779,7 @@ export default function Home() {
                       <p>Web</p>
                       <div class="portfolio-links">
                         <a
-                          href="@/styles/assets/img/portfolio/portfolio-9.jpg"
+                          href="/img/portfolio/portfolio-9.jpg"
                           data-gallery="portfolioGallery"
                           class="portfolio-lightbox"
                           title="Web 3"
@@ -743,131 +796,9 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section id="testimonials" class="testimonials section-bg">
-            <div class="container" data-aos="fade-up">
-              <div class="section-title">
-                <h2>Testimonials</h2>
-                <p>
-                  Magnam dolores commodi suscipit. Necessitatibus eius
-                  consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-                  velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                  suscipit alias ea. Quia fugiat sit in iste officiis commodi
-                  quidem hic quas.
-                </p>
-              </div>
 
-              <div
-                class="testimonials-slider swiper"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Proin iaculis purus consequat sem cure digni ssim donec
-                        porttitora entum suscipit rhoncus. Accusantium quam,
-                        ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                        risus at semper.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                      <img
-                        src="@/styles/assets/img/testimonials/testimonials-1.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Saul Goodman</h3>
-                      <h4>Ceo &amp; Founder</h4>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Export tempor illum tamen malis malis eram quae irure
-                        esse labore quem cillum quid cillum eram malis quorum
-                        velit fore eram velit sunt aliqua noster fugiat irure
-                        amet legam anim culpa.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                      <img
-                        src="@/styles/assets/img/testimonials/testimonials-2.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Sara Wilsson</h3>
-                      <h4>Designer</h4>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Enim nisi quem export duis labore cillum quae magna enim
-                        sint quorum nulla quem veniam duis minim tempor labore
-                        quem eram duis noster aute amet eram fore quis sint
-                        minim.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                      <img
-                        src="@/styles/assets/img/testimonials/testimonials-3.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Jena Karlis</h3>
-                      <h4>Store Owner</h4>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Fugiat enim eram quae cillum dolore dolor amet nulla
-                        culpa multos export minim fugiat minim velit minim dolor
-                        enim duis veniam ipsum anim magna sunt elit fore quem
-                        dolore labore illum veniam.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                      <img
-                        src="@/styles/assets/img/testimonials/testimonials-4.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Matt Brandon</h3>
-                      <h4>Freelancer</h4>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Quis quorum aliqua sint quem legam fore sunt eram irure
-                        aliqua veniam tempor noster veniam enim culpa labore
-                        duis sunt culpa nulla illum cillum fugiat legam esse
-                        veniam culpa fore nisi cillum quid.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                      <img
-                        src="@/styles/assets/img/testimonials/testimonials-5.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>John Larson</h3>
-                      <h4>Entrepreneur</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </div>
-          </section>
           <section id="team" class="team">
-            <div class="container" data-aos="fade-up">
+            <div class="container">
               <div class="section-title">
                 <h2>Team</h2>
                 <p>
@@ -880,17 +811,9 @@ export default function Home() {
               </div>
 
               <div class="row">
-                <div
-                  class="col-xl-3 col-lg-4 col-md-6"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
+                <div class="col-xl-3 col-lg-4 col-md-6">
                   <div class="member">
-                    <img
-                      src="@/styles/assets/img/team/team-1.jpg"
-                      class="img-fluid"
-                      alt=""
-                    />
+                    <img src="/img/team/team-1.jpg" class="img-fluid" alt="" />
                     <div class="member-info">
                       <div class="member-info-content">
                         <h4>Walter White</h4>
@@ -914,17 +837,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-xl-3 col-lg-4 col-md-6"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
+                <div class="col-xl-3 col-lg-4 col-md-6">
                   <div class="member">
-                    <img
-                      src="@/styles/assets/img/team/team-2.jpg"
-                      class="img-fluid"
-                      alt=""
-                    />
+                    <img src="/img/team/team-2.jpg" class="img-fluid" alt="" />
                     <div class="member-info">
                       <div class="member-info-content">
                         <h4>Sarah Jhonson</h4>
@@ -948,17 +863,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-xl-3 col-lg-4 col-md-6"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
+                <div class="col-xl-3 col-lg-4 col-md-6">
                   <div class="member">
-                    <img
-                      src="@/styles/assets/img/team/team-3.jpg"
-                      class="img-fluid"
-                      alt=""
-                    />
+                    <img src="/img/team/team-3.jpg" class="img-fluid" alt="" />
                     <div class="member-info">
                       <div class="member-info-content">
                         <h4>William Anderson</h4>
@@ -982,17 +889,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-xl-3 col-lg-4 col-md-6"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
+                <div class="col-xl-3 col-lg-4 col-md-6">
                   <div class="member">
-                    <img
-                      src="@/styles/assets/img/team/team-4.jpg"
-                      class="img-fluid"
-                      alt=""
-                    />
+                    <img src="/img/team/team-4.jpg" class="img-fluid" alt="" />
                     <div class="member-info">
                       <div class="member-info-content">
                         <h4>Amanda Jepson</h4>
@@ -1019,7 +918,7 @@ export default function Home() {
             </div>
           </section>
           <section id="pricing" class="pricing section-bg">
-            <div class="container" data-aos="fade-up">
+            <div class="container">
               <div class="section-title">
                 <h2>Pricing</h2>
                 <p>
@@ -1032,11 +931,7 @@ export default function Home() {
               </div>
 
               <div class="row">
-                <div
-                  class="col-lg-4 col-md-6"
-                  data-aos="zoom-in"
-                  data-aos-delay="200"
-                >
+                <div class="col-lg-4 col-md-6">
                   <div class="box">
                     <h3>Free</h3>
                     <h4>
@@ -1057,11 +952,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 mt-4 mt-md-0"
-                  data-aos="zoom-in"
-                  data-aos-delay="100"
-                >
+                <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
                   <div class="box featured">
                     <h3>Business</h3>
                     <h4>
@@ -1082,11 +973,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  class="col-lg-4 col-md-6 mt-4 mt-lg-0"
-                  data-aos="zoom-in"
-                  data-aos-delay="200"
-                >
+                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
                   <div class="box">
                     <h3>Developer</h3>
                     <h4>
@@ -1110,7 +997,7 @@ export default function Home() {
             </div>
           </section>
           <section id="faq" class="faq">
-            <div class="container" data-aos="fade-up">
+            <div class="container">
               <div class="section-title">
                 <h2>Frequently Asked Questions</h2>
               </div>
@@ -1250,7 +1137,7 @@ export default function Home() {
             </div>
           </section>
           <section id="contact" class="contact section-bg">
-            <div class="container" data-aos="fade-up">
+            <div class="container">
               <div class="section-title">
                 <h2>Contact</h2>
                 <p>
@@ -1360,8 +1247,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-        </main> */}
-       
+        </main>
       </Layout>
     </>
   );
