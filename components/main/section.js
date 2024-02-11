@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Section() {
@@ -9,9 +10,9 @@ export default function Section() {
           Kami adalah aplikasi sosial media yang untuk menjangkau teman yang
           laebih banyak
         </h2>
-        <a href="#about" className="btn-get-started scrollto">
+        <Link href="/posts" className="btn-get-started scrollto">
           Mari mulai
-        </a>
+        </Link>
         <img src="/img/hero-img.png" className="img-fluid hero-img" alt="" />
       </div>
     </section>

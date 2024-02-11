@@ -8,7 +8,7 @@ export default function Listkomentar(props) {
     description: "",
   });
   const { mutate } = useMutation();
-  // console.log(props.id);
+  const [dataList, setDataList] = useState("");
 
   const kirimKomentar = async () => {
     const response = await mutate({
@@ -29,7 +29,7 @@ export default function Listkomentar(props) {
         position: "top",
       });
     } else {
-      // refetchData();
+      refetchData();
       setPayload({
         description: "",
       });
@@ -43,6 +43,61 @@ export default function Listkomentar(props) {
       });
     }
   };
+
+  const refetchData = async () => {
+    const response = await fetch(
+      "https://paace-f178cafcae7b.nevacloud.io/api/replies/post/" + props.id,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("user_token")}`,
+        },
+      }
+    );
+    const list = await response.json();
+    setDataList(list);
+  };
+
+  const hapusKomentar = async (idKomentar) => {
+    const response = await mutate({
+      url:
+        "https://paace-f178cafcae7b.nevacloud.io/api/replies/delete/" +
+        idKomentar,
+      payload: payload,
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("user_token")}`,
+      },
+    });
+    if (!response?.success) {
+      toast({
+        title: "Komentar Gagal Dihapus!",
+        description: "Komentar yang anda hapus gagal diunggah",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      refetchData();
+      setPayload({
+        description: "",
+      });
+      toast({
+        title: "Komentar Berhasil Dihapus!",
+        description: "Komentar yang anda hapus berhasil diunggah",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
+
+  useEffect(() => {
+    refetchData();
+  }, [props.id]);
 
   const formatDate = (tgl) => {
     var mydate = new Date(tgl);
@@ -75,17 +130,27 @@ export default function Listkomentar(props) {
                     style={{ maxHeight: "300px", overflowY: "auto" }}
                   >
                     {/* start coment */}
-                    {props.data?.data?.map((item) => (
-                      <a
-                        href="#"
-                        className="list-group-item list-group-item-action flex-column align-items-start"
-                      >
-                        <div className="d-flex w-100 justify-content-between">
-                          <h5 className="mb-1">{item.user.name}</h5>
-                          <small>{formatDate(item.created_at)}</small>
-                        </div>
-                        <p className="mb-1">{item.description}</p>
-                      </a>
+                    {dataList?.data?.map((item) => (
+                      <>
+                        <a className="list-group-item list-group-item-action flex-column align-items-start">
+                          <div className="d-flex w-100 justify-content-between">
+                            <h5 className="mb-2 fw-bold">
+                              {item.user.name}{" "}
+                              {item.is_own_reply && (
+                                <button
+                                  className="btn btn-danger"
+                                  onClick={() => hapusKomentar(item.id)}
+                                >
+                                  hapus
+                                </button>
+                              )}
+                            </h5>
+                            <small>{formatDate(item.created_at)}</small>
+                          </div>
+                          <p className="mb-1">{item.description}</p>
+                        </a>
+                        <p></p>
+                      </>
                     ))}
                     {/* end Comment */}
                   </div>

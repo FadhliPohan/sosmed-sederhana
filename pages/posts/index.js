@@ -146,6 +146,7 @@ export default function Post() {
 
   const closeModal = () => {
     setKomentar(false);
+    refetchData();
     setId("");
   };
   return (
