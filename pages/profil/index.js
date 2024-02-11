@@ -21,7 +21,7 @@ export default function Profil() {
                     <img src="assets/img/portfolio/portfolio-3.jpg" alt="" />
                   </div>
                 </div>
-                <div className="swiper-pagination"></div>
+                <div className="swiper-pagination" />
               </div>
             </div>
 

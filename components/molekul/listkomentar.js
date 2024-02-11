@@ -1,7 +1,8 @@
-import { useMutation } from "@/hooks/useMutation";
 import { useToast } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
+import { useMutation } from "@/hooks/useMutation";
+
 export default function Listkomentar(props) {
   const toast = useToast();
   const [payload, setPayload] = useState({
@@ -13,8 +14,8 @@ export default function Listkomentar(props) {
   const kirimKomentar = async () => {
     const response = await mutate({
       url:
-        "https://paace-f178cafcae7b.nevacloud.io/api/replies/post/" + props.id,
-      payload: payload,
+        `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${props.id}`,
+      payload,
       headers: {
         Authorization: `Bearer ${Cookies.get("user_token")}`,
       },
@@ -46,7 +47,7 @@ export default function Listkomentar(props) {
 
   const refetchData = async () => {
     const response = await fetch(
-      "https://paace-f178cafcae7b.nevacloud.io/api/replies/post/" + props.id,
+      `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${props.id}`,
       {
         method: "GET",
         headers: {
@@ -62,9 +63,9 @@ export default function Listkomentar(props) {
   const hapusKomentar = async (idKomentar) => {
     const response = await mutate({
       url:
-        "https://paace-f178cafcae7b.nevacloud.io/api/replies/delete/" +
-        idKomentar,
-      payload: payload,
+        `https://paace-f178cafcae7b.nevacloud.io/api/replies/delete/${
+          idKomentar}`,
+      payload,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -100,8 +101,8 @@ export default function Listkomentar(props) {
   }, [props.id]);
 
   const formatDate = (tgl) => {
-    var mydate = new Date(tgl);
-    var str = mydate.toLocaleDateString();
+    const mydate = new Date(tgl);
+    const str = mydate.toLocaleDateString();
     return str;
   };
 
@@ -149,7 +150,7 @@ export default function Listkomentar(props) {
                           </div>
                           <p className="mb-1">{item.description}</p>
                         </a>
-                        <p></p>
+                        <p />
                       </>
                     ))}
                     {/* end Comment */}
@@ -169,7 +170,7 @@ export default function Listkomentar(props) {
                         }}
                         placeholder="Apa yang sedang kamu pikirkan?"
                         required
-                      ></textarea>
+                      />
                     </div>
 
                     <div className="text-center m-3">

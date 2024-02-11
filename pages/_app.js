@@ -9,8 +9,8 @@ import "@/styles/assets/vendor/swiper/swiper-bundle.min.css";
 
 import "@/styles/assets/css/style.css";
 
-import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
 import { UserContextProvider } from "@/context/userContact";
 
 const theme = extendTheme({

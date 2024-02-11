@@ -1,26 +1,25 @@
-import { UserContect } from "@/context/userContact";
-import { useMutation } from "@/hooks/useMutation";
-import { useToast } from "@chakra-ui/react";
-import Cookies from "js-cookie";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
-import {
+import { useToast ,
   GridItem,
   Text,
   Button,
   useDisclosure,
   Textarea,
-} from "@chakra-ui/react";
-import {
+,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+  ModalCloseButton} from "@chakra-ui/react";
+import Cookies from "js-cookie";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+
+
+import { useMutation } from "@/hooks/useMutation";
+import { UserContect } from "@/context/userContact";
 
 export default function Header() {
   const router = useRouter();
@@ -51,7 +50,7 @@ export default function Header() {
       setisLogin(true);
     }
   }),
-    [];
+  [];
 
   const HandleLogout = async () => {
     const response = await mutate({
@@ -124,10 +123,10 @@ export default function Header() {
                   <></>
                 ) : (
                   <>
-                    <li class="dropdown">
+                    <li className="dropdown">
                       <a href="#">
                         <span>Pengaturan</span>{" "}
-                        <i class="bi bi-chevron-down"></i>
+                        <i className="bi bi-chevron-down" />
                       </a>
                       <ul>
                         <li>
@@ -165,16 +164,15 @@ export default function Header() {
                   </li>
                 )}
               </ul>
-              <i className="bi bi-list mobile-nav-toggle"></i>
+              <i className="bi bi-list mobile-nav-toggle" />
             </nav>
           </div>
         </header>
       </div>
 
-      <>
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
             <ModalHeader>Notif Kamu Hari Ini ges</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
@@ -200,7 +198,7 @@ export default function Header() {
                           Postingan : {item.posts.description}
                         </p>
                       </a>
-                      <p></p>
+                      <p />
                     </div>
                   ))}
                   {/* end Comment */}
@@ -214,8 +212,7 @@ export default function Header() {
               </Button>
             </ModalFooter>
           </ModalContent>
-        </Modal>
-      </>
+      </Modal>
     </>
   );
 }

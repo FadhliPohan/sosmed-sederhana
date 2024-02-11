@@ -1,11 +1,11 @@
+import { Avatar, Stack, useToast } from "@chakra-ui/react";
+import Cookies from "js-cookie";
+import React, { useState } from "react";
 import Listkomentar from "@/components/molekul/listkomentar";
 import { useLike } from "@/hooks/useLike";
 import { useMutation } from "@/hooks/useMutation";
 import { useQueries } from "@/hooks/useQueries";
 import Layout from "@/layout";
-import { Avatar, Stack, useToast } from "@chakra-ui/react";
-import Cookies from "js-cookie";
-import React, { useState } from "react";
 
 export default function Post() {
   const toast = useToast();
@@ -18,7 +18,9 @@ export default function Post() {
   const [payload, setPayload] = useState({
     description: "",
   });
-  const { data, isLoading, isError, refetchData } = useQueries({
+  const {
+    data, isLoading, isError, refetchData
+  } = useQueries({
     prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/posts?type=all",
     headers: {
       Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -40,7 +42,7 @@ export default function Post() {
   const kirimCerita = async () => {
     const response = await mutate({
       url: "https://paace-f178cafcae7b.nevacloud.io/api/post",
-      payload: payload,
+      payload,
       headers: {
         Authorization: `Bearer ${Cookies.get("user_token")}`,
       },
@@ -72,7 +74,7 @@ export default function Post() {
 
   const sukaiPost = async (idPost) => {
     const response = await like({
-      idPost: idPost,
+      idPost,
     });
     if (!response?.success) {
       toast({
@@ -98,7 +100,7 @@ export default function Post() {
   };
   const unlikepost = async (idPost) => {
     const response = await unlike({
-      idPost: idPost,
+      idPost,
     });
     if (!response?.success) {
       toast({
@@ -128,7 +130,7 @@ export default function Post() {
     setId(idPost);
     try {
       const response = await fetch(
-        "https://paace-f178cafcae7b.nevacloud.io/api/replies/post/" + idPost,
+        `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${idPost}`,
         {
           method: "GET",
           headers: {
@@ -154,9 +156,9 @@ export default function Post() {
       <Layout>
         <br />
         <main id="main">
-          <section id="pricing" class="pricing section-bg">
-            <div class="container">
-              <div class="section-title">
+          <section id="pricing" className="pricing section-bg">
+            <div className="container">
+              <div className="section-title">
                 <h2>Postingan Guys</h2>
                 <p>
                   kuy buat postingan baru biar hidupmu lebih berisi dan
@@ -176,12 +178,12 @@ export default function Post() {
                 // onFetch={lihatKomentar(id)}
                 name="Komentar Netizen"
                 size="lg"
-                data={listKomen ? listKomen : null}
-                id={id ? id : null}
+                data={listKomen || null}
+                id={id || null}
               />
 
               {openCerita ? (
-                <div class="col-lg-12 mt-4 mt-md-0 mb-3">
+                <div className="col-lg-12 mt-4 mt-md-0 mb-3">
                   <div className="card ">
                     <div className="card-card-header mt-4">
                       <h3
@@ -192,8 +194,8 @@ export default function Post() {
                       </h3>
                     </div>
                     <div className="card-body">
-                      <form role="form" class="php-email-form">
-                        <div class="form-group mt-3">
+                      <form role="form" className="php-email-form">
+                        <div className="form-group mt-3">
                           {/* <input
                         hidden
                         value={payload?.id}
@@ -205,7 +207,7 @@ export default function Post() {
                         }}
                       /> */}
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             name="description"
                             rows="5"
                             value={payload?.description}
@@ -217,10 +219,10 @@ export default function Post() {
                             }}
                             placeholder="Apa yang sedang kamu pikirkan?"
                             required
-                          ></textarea>
+                          />
                         </div>
 
-                        <div class="text-center m-3">
+                        <div className="text-center m-3">
                           <button
                             type="submit"
                             className="btn btn-danger "
@@ -246,7 +248,7 @@ export default function Post() {
               )}
 
               {data?.data?.map((item) => (
-                <div class="row">
+                <div className="row">
                   <div className="col-lg-12 col-md-12">
                     <div className="card border-success mb-3">
                       <div className="card-header bg-success-subtle">

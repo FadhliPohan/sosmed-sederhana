@@ -1,5 +1,3 @@
-import { useQueries } from "@/hooks/useQueries";
-import Layout from "@/layout";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import {
@@ -8,16 +6,17 @@ import {
   Button,
   useDisclosure,
   Textarea,
-} from "@chakra-ui/react";
-import {
+
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
+  ModalCloseButton
 } from "@chakra-ui/react";
+import Layout from "@/layout";
+import { useQueries } from "@/hooks/useQueries";
 import { useMutation } from "@/hooks/useMutation";
 
 export default function DetailPost() {
@@ -36,7 +35,9 @@ export default function DetailPost() {
   const onCloseDelete = () => {
     setIsDelete(false);
   };
-  const { data, isLoading, isError, refetchData } = useQueries({
+  const {
+    data, isLoading, isError, refetchData
+  } = useQueries({
     prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/posts?type=me",
     headers: {
       Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -47,7 +48,7 @@ export default function DetailPost() {
     try {
       const response = await mutate({
         url:
-          "https://paace-f178cafcae7b.nevacloud.io/api/post/update/" + idPost,
+          `https://paace-f178cafcae7b.nevacloud.io/api/post/update/${idPost}`,
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +68,7 @@ export default function DetailPost() {
     // onOpen();
     try {
       const response = await mutate({
-        url: "https://paace-f178cafcae7b.nevacloud.io/api/post/" + idPost,
+        url: `https://paace-f178cafcae7b.nevacloud.io/api/post/${idPost}`,
         method: "GET",
         headers: {
           Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -89,7 +90,7 @@ export default function DetailPost() {
 
     try {
       const response = await mutate({
-        url: "https://paace-f178cafcae7b.nevacloud.io/api/post/" + id,
+        url: `https://paace-f178cafcae7b.nevacloud.io/api/post/${id}`,
         method: "GET",
         headers: {
           Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -106,7 +107,7 @@ export default function DetailPost() {
   const DeleteData = async (id) => {
     try {
       const response = await mutate({
-        url: "https://paace-f178cafcae7b.nevacloud.io/api/post/delete/" + id,
+        url: `https://paace-f178cafcae7b.nevacloud.io/api/post/delete/${id}`,
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -132,8 +133,8 @@ export default function DetailPost() {
     setDetailMe(response);
   };
   const formatDate = (tgl) => {
-    var mydate = new Date(tgl);
-    var str = mydate.toString();
+    const mydate = new Date(tgl);
+    const str = mydate.toString();
     return str;
   };
 
@@ -157,7 +158,7 @@ export default function DetailPost() {
               </p>
             </div>
 
-            <div className="row"></div>
+            <div className="row" />
           </div>
         </section>
         <section id="services" className="services">
@@ -179,11 +180,11 @@ export default function DetailPost() {
                       <button
                         className="bi bi-trash m-2"
                         onClick={() => HandleDelete(item.id)}
-                      ></button>
+                      />
                       <button
                         className="bi bi-pencil-square m-2"
                         onClick={() => ViewData(item.id)}
-                      ></button>
+                      />
                     </div>
                     <h4 className="title mt-2">
                       <p href="">{item.user.email}</p>
@@ -197,42 +198,39 @@ export default function DetailPost() {
         </section>
       </Layout>
 
-      <>
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Edit status, bisa kok...</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <GridItem>
-                <Textarea
-                  value={textInput?.description || ""}
-                  onChange={(event) =>
-                    setTextnput({
-                      ...textInput,
-                      description: event.target.value,
-                    })
-                  }
-                />
-              </GridItem>
-            </ModalBody>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Edit status, bisa kok...</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <GridItem>
+              <Textarea
+                value={textInput?.description || ""}
+                onChange={(event) =>
+                  setTextnput({
+                    ...textInput,
+                    description: event.target.value,
+                  })}
+              />
+            </GridItem>
+          </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => {
-                  HandleSubmit(textInput?.id || "");
-                }}
-              >
-                Simpan
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                HandleSubmit(textInput?.id || "");
+              }}
+            >
+              Simpan
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
       {/* modal close */}
       <Modal isOpen={isDelete} onClose={onCloseDelete}>

@@ -1,10 +1,10 @@
-import { useMutation } from "@/hooks/useMutation";
-import Layout from "@/layout";
 import { useToast } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Layout from "@/layout";
+import { useMutation } from "@/hooks/useMutation";
 
 export default function Login() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function Login() {
     console.log(payload);
     const response = await mutate({
       url: "https://paace-f178cafcae7b.nevacloud.io/api/register",
-      payload: payload,
+      payload,
     });
     if (!response?.success) {
       toast({
