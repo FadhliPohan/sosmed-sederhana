@@ -84,25 +84,32 @@ export default function Header() {
                   }`}
                   href="/aboutme"
                 >
-                  Tentang Saya
+                  Tentang Pengembang
                 </Link>
               </li>
               {isLogin === false ? (
                 <></>
               ) : (
-                <li class="dropdown">
-                  <a href="#">
-                    <span>Pengaturan</span> <i class="bi bi-chevron-down"></i>
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="#">{userData?.name}</a>
-                    </li>
-                    <li>
-                      <a href="#">Notifikasi</a>
-                    </li>
-                  </ul>
-                </li>
+                <>
+                  <li class="dropdown">
+                    <a href="#">
+                      <span>Pengaturan</span> <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="#">{userData?.name}</a>
+                      </li>
+                      <li>
+                        <a href="#">Notifikasi</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link className="btn-buy" href="/posts">
+                      Lihat Postingan
+                    </Link>
+                  </li>
+                </>
               )}
 
               {isLogin === false ? (

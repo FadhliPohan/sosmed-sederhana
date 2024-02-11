@@ -22,11 +22,15 @@ export const useQueries = ({ prefixUrl = "", headers = {} } = {}) => {
     []
   );
 
+  const refetchData = useCallback(() => {
+    fetchingData({ url: prefixUrl, headers: headers });
+  }, [prefixUrl, headers, fetchingData]);
+
   useEffect(() => {
     if (prefixUrl) {
       fetchingData({ url: prefixUrl, headers: headers });
     }
   }, []);
 
-  return { ...data };
+  return { ...data, refetchData };
 };

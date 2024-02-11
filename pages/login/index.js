@@ -16,7 +16,6 @@ export default function Login() {
   });
 
   const HandleSubmit = async () => {
-    console.log(payload);
     const response = await mutate({
       url: "https://paace-f178cafcae7b.nevacloud.io/api/login",
       payload: payload,
@@ -36,14 +35,14 @@ export default function Login() {
         path: "/",
       });
       toast({
-        title: "Register Berhasil !",
+        title: "Login Berhasil !",
         description: "Username atau Pasword yang anda masukkan salah",
         status: "success",
         duration: 9000,
         isClosable: true,
         position: "top",
       });
-      router.push("/");
+      location.reload();
     }
   };
 
