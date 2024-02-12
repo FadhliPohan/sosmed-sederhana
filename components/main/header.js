@@ -28,6 +28,7 @@ export default function Header() {
   const [isLogin, setisLogin] = useState(false);
   const userData = useContext(UserContect);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [token] = useState(Cookies.get("user_token"));
 
   const notif = async () => {
     const response = await mutate({
@@ -44,7 +45,7 @@ export default function Header() {
 
   useEffect(() => {
     setActiveLink(router.asPath);
-    if (userData) {
+    if (token) {
       setisLogin(true);
     }
   }, []);
@@ -86,13 +87,14 @@ export default function Header() {
       window.location.reload();
     }
   };
+
   return (
     <>
       <div>
         <header id="header" className="fixed-top">
           <div className="container d-flex align-items-center justify-content-between">
             <h1 className="logo">
-              <a href="index.html">Huhuii</a>
+              <Link href="/">Huhuii</Link>
             </h1>
             <nav id="navbar" className="navbar">
               <ul>
@@ -116,14 +118,16 @@ export default function Header() {
                     Tentang Pengembang
                   </Link>
                 </li>
-                {isLogin === true && (
+
+                {isLogin && (
                   <>
+                    <li>
+                      <Link className="btn-buy" href="/posts">
+                        Lihat Postingan
+                      </Link>
+                    </li>
                     <li className="dropdown">
-                      <p type="button">
-                        <span>Pengaturan</span>
-                        {" "}
-                        <i className="bi bi-chevron-down" />
-                      </p>
+                      <Link href="/">pengaturan</Link>
                       <ul>
                         <li>
                           <Link href={`/posts/${userData?.email}`}>
@@ -131,16 +135,11 @@ export default function Header() {
                           </Link>
                         </li>
                         <li>
-                          <button type="button" onClick={() => notif()}>
+                          <Link href="/" type="button" onClick={() => notif()}>
                             Notifikasi
-                          </button>
+                          </Link>
                         </li>
                       </ul>
-                    </li>
-                    <li>
-                      <Link className="btn-buy" href="/posts">
-                        Lihat Postingan
-                      </Link>
                     </li>
                   </>
                 )}
@@ -193,14 +192,9 @@ export default function Header() {
                         <h5 className="mb-2 fw-bold">{item.user.name}</h5>
                         <small>{item.user.email}</small>
                       </div>
+                      <p className="mb-1">Bentuk :{item.remark}</p>
                       <p className="mb-1">
-                        Bentuk :
-                        {item.remark}
-                      </p>
-                      <p className="mb-1">
-                        Postingan :
-                        {" "}
-                        {item.posts.description}
+                        Postingan : {item.posts.description}
                       </p>
                     </button>
                     <p />

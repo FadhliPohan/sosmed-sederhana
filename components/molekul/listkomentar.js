@@ -112,8 +112,8 @@ export default function Listkomentar(props) {
       {isOpen && (
         <div
           className="modal-overlay"
-          onClick={onClose}
-          onKeyDown={(e) => e.key === "Enter" && onClose()}
+          // onClick={onClose}
+          // onKeyDown={(e) => e.key === "Enter" && onClose()}
           role="button"
           tabIndex="0"
           aria-label="Close Modal"

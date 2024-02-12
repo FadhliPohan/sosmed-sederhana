@@ -52,7 +52,7 @@ export default function Login() {
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-md-9 col-lg-6 col-xl-5">
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                  src="/img/hero-img.png"
                   className="img-fluid"
                   alt=""
                 />
@@ -80,9 +80,7 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Masukkan nama lengkapmu"
                     />
-                    {/* <label className="form-label" htmlFor="name">
-                      Nama
-                    </label> */}
+
                   </div>
                   {/* Email input */}
                   <div className="form-outline mb-3">
@@ -96,9 +94,7 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Enter a valid email address"
                     />
-                    {/* <label className="form-label" htmlFor="email">
-                      Email address
-                    </label> */}
+
                   </div>
                   {/* Password input */}
                   <div className="form-outline mb-3">
@@ -115,9 +111,7 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Enter password"
                     />
-                    {/* <label className="form-label" htmlFor="form3Example4">
-                      Password
-                    </label> */}
+
                   </div>
 
                   <div className="text-center text-lg-start mt-4 pt-2">
@@ -134,9 +128,7 @@ export default function Login() {
                       <Link href="/register" className="link-danger">
                         Register
                       </Link>
-                      {/* <Link href="#!" className="link-danger">
-                            Register
-                            </Link> */}
+
                     </p>
                   </div>
                 </form>
