@@ -54,7 +54,7 @@ export default function Login() {
                 <img
                   src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                   className="img-fluid"
-                  alt="Sample image"
+                  alt=""
                 />
               </div>
               <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -80,9 +80,9 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Masukkan nama lengkapmu"
                     />
-                    <label className="form-label" htmlFor="form3Example3">
+                    {/* <label className="form-label" htmlFor="name">
                       Nama
-                    </label>
+                    </label> */}
                   </div>
                   {/* Email input */}
                   <div className="form-outline mb-3">
@@ -96,9 +96,9 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Enter a valid email address"
                     />
-                    <label className="form-label" htmlFor="form3Example3">
+                    {/* <label className="form-label" htmlFor="email">
                       Email address
-                    </label>
+                    </label> */}
                   </div>
                   {/* Password input */}
                   <div className="form-outline mb-3">
@@ -115,9 +115,9 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Enter password"
                     />
-                    <label className="form-label" htmlFor="form3Example4">
+                    {/* <label className="form-label" htmlFor="form3Example4">
                       Password
-                    </label>
+                    </label> */}
                   </div>
 
                   <div className="text-center text-lg-start mt-4 pt-2">
@@ -130,7 +130,7 @@ export default function Login() {
                       Login
                     </button>
                     <p className="small fw-bold mt-2 pt-1 mb-0">
-                      Don't have an account?
+                      Tidak Memiliki Akun ?
                       <Link href="/register" className="link-danger">
                         Register
                       </Link>

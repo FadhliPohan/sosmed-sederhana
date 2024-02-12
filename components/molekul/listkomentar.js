@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useMutation } from "@/hooks/useMutation";
 
 export default function Listkomentar(props) {
+  const {
+    id, onClose, name, isOpen,
+  } = props;
   const toast = useToast();
   const [payload, setPayload] = useState({
     description: "",
@@ -11,10 +14,25 @@ export default function Listkomentar(props) {
   const { mutate } = useMutation();
   const [dataList, setDataList] = useState("");
 
+  const refetchData = async () => {
+    const response = await fetch(
+      `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("user_token")}`,
+        },
+      },
+    );
+    const list = await response.json();
+    setDataList(list);
+  };
+
   const kirimKomentar = async () => {
+    // const { id } = props;
     const response = await mutate({
-      url:
-        `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${props.id}`,
+      url: `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${id}`,
       payload,
       headers: {
         Authorization: `Bearer ${Cookies.get("user_token")}`,
@@ -45,26 +63,9 @@ export default function Listkomentar(props) {
     }
   };
 
-  const refetchData = async () => {
-    const response = await fetch(
-      `https://paace-f178cafcae7b.nevacloud.io/api/replies/post/${props.id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${Cookies.get("user_token")}`,
-        },
-      }
-    );
-    const list = await response.json();
-    setDataList(list);
-  };
-
   const hapusKomentar = async (idKomentar) => {
     const response = await mutate({
-      url:
-        `https://paace-f178cafcae7b.nevacloud.io/api/replies/delete/${
-          idKomentar}`,
+      url: `https://paace-f178cafcae7b.nevacloud.io/api/replies/delete/${idKomentar}`,
       payload,
       method: "DELETE",
       headers: {
@@ -98,7 +99,7 @@ export default function Listkomentar(props) {
 
   useEffect(() => {
     refetchData();
-  }, [props.id]);
+  }, [id]);
 
   const formatDate = (tgl) => {
     const mydate = new Date(tgl);
@@ -107,17 +108,25 @@ export default function Listkomentar(props) {
   };
 
   return (
-    <>
-      {props.isOpen && (
-        <div className="modal-overlay" onClick={props.onClose}>
+    <div>
+      {isOpen && (
+        <div
+          className="modal-overlay"
+          onClick={onClose}
+          onKeyDown={(e) => e.key === "Enter" && onClose()}
+          role="button"
+          tabIndex="0"
+          aria-label="Close Modal"
+        >
           <div className="modal-dialog modal-xl">
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content">
               <div className="card">
                 <div className="card-header d-flex">
-                  <h5 className="mt-4 lead fw-semibold">{props.name}</h5>
+                  <h5 className="mt-4 lead fw-semibold">{name}</h5>
                   <button
+                    type="button"
                     className="btn btn-sm ms-auto"
-                    onClick={props.onClose}
+                    onClick={onClose}
                   >
                     X
                   </button>
@@ -130,32 +139,34 @@ export default function Listkomentar(props) {
                     className="list-group"
                     style={{ maxHeight: "300px", overflowY: "auto" }}
                   >
-                    {/* start coment */}
+                    {/* start comment */}
                     {dataList?.data?.map((item) => (
-                      <>
-                        <a className="list-group-item list-group-item-action flex-column align-items-start">
-                          <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-2 fw-bold">
-                              {item.user.name}{" "}
-                              {item.is_own_reply && (
-                                <button
-                                  className="btn btn-danger"
-                                  onClick={() => hapusKomentar(item.id)}
-                                >
-                                  hapus
-                                </button>
-                              )}
-                            </h5>
-                            <small>{formatDate(item.created_at)}</small>
-                          </div>
-                          <p className="mb-1">{item.description}</p>
-                        </a>
-                        <p />
-                      </>
+                      <div
+                        key={item.id}
+                        className="list-group-item list-group-item-action flex-column align-items-start"
+                      >
+                        <div className="d-flex w-100 justify-content-between">
+                          <h5 className="mb-2 fw-bold">
+                            {item.user.name}
+                            {" "}
+                            {item.is_own_reply && (
+                              <button
+                                type="button"
+                                className="btn btn-danger"
+                                onClick={() => hapusKomentar(item.id)}
+                              >
+                                hapus
+                              </button>
+                            )}
+                          </h5>
+                          <small>{formatDate(item.created_at)}</small>
+                        </div>
+                        <p className="mb-1">{item.description}</p>
+                      </div>
                     ))}
-                    {/* end Comment */}
+                    {/* end comment */}
                   </div>
-                  <form role="form" className="php-email-form">
+                  <form className="php-email-form">
                     <div className="form-group mt-3">
                       <textarea
                         className="form-control"
@@ -178,7 +189,7 @@ export default function Listkomentar(props) {
                         type="button"
                         className="btn btn-danger "
                         style={{ marginRight: "10px" }}
-                        onClick={props.onClose}
+                        onClick={onClose}
                       >
                         Batal
                       </button>
@@ -197,6 +208,6 @@ export default function Listkomentar(props) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

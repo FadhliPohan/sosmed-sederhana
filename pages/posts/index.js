@@ -19,7 +19,7 @@ export default function Post() {
     description: "",
   });
   const {
-    data, isLoading, isError, refetchData
+    data, isLoading, isError, refetchData,
   } = useQueries({
     prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/posts?type=all",
     headers: {
@@ -137,7 +137,7 @@ export default function Post() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${Cookies.get("user_token")}`,
           },
-        }
+        },
       );
       const list = await response.json();
       setListKomen(list);
@@ -162,8 +162,10 @@ export default function Post() {
                 <h2>Postingan Guys</h2>
                 <p>
                   kuy buat postingan baru biar hidupmu lebih berisi dan
-                  diperhatikan, tenang kamu ngak sendiri kok :){" "}
+                  diperhatikan, tenang kamu ngak sendiri kok :)
+                  {" "}
                   <button
+                    type="button"
                     className="btn btn-primary"
                     onClick={() => OpenCerita()}
                   >
@@ -182,7 +184,7 @@ export default function Post() {
                 id={id || null}
               />
 
-              {openCerita ? (
+              {openCerita && (
                 <div className="col-lg-12 mt-4 mt-md-0 mb-3">
                   <div className="card ">
                     <div className="card-card-header mt-4">
@@ -194,18 +196,8 @@ export default function Post() {
                       </h3>
                     </div>
                     <div className="card-body">
-                      <form role="form" className="php-email-form">
+                      <form className="php-email-form">
                         <div className="form-group mt-3">
-                          {/* <input
-                        hidden
-                        value={payload?.id}
-                        onChange={(event) => {
-                          setPayload({
-                            ...payload,
-                            id: event.target.value,
-                          });
-                        }}
-                      /> */}
                           <textarea
                             className="form-control"
                             name="description"
@@ -243,8 +235,6 @@ export default function Post() {
                     </div>
                   </div>
                 </div>
-              ) : (
-                <></>
               )}
 
               {data?.data?.map((item) => (
@@ -291,8 +281,11 @@ export default function Post() {
                           >
                             <span className="badge badge-danger bg-danger">
                               {item.likes_count}
-                            </span>{" "}
-                            &nbsp; {item.is_like_post ? "Menyukai" : "suka"}
+                            </span>
+                            {" "}
+                            &nbsp;
+                            {" "}
+                            {item.is_like_post ? "Menyukai" : "suka"}
                           </button>
 
                           <button
@@ -302,7 +295,8 @@ export default function Post() {
                           >
                             <span className="badge badge-primary bg-primary">
                               {item.replies_count}
-                            </span>{" "}
+                            </span>
+                            {" "}
                             &nbsp; Komentar
                           </button>
                         </div>

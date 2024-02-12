@@ -42,7 +42,7 @@ export default function Login() {
         isClosable: true,
         position: "top",
       });
-      location.reload();
+      window.location.reload();
     }
   };
 
@@ -56,7 +56,7 @@ export default function Login() {
                 <img
                   src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                   className="img-fluid"
-                  alt="Sample image"
+                  alt=""
                 />
               </div>
               <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -72,6 +72,7 @@ export default function Login() {
                   </div>
                   {/* Email input */}
                   <div className="form-outline mb-4">
+                    {/* <label className="form-label" htmlFor="email">Email address</label> */}
                     <input
                       type="email"
                       id="email"
@@ -82,12 +83,10 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Enter a valid email address"
                     />
-                    <label className="form-label" htmlFor="form3Example3">
-                      Email address
-                    </label>
                   </div>
                   {/* Password input */}
                   <div className="form-outline mb-3">
+                    {/* <label className="form-label" htmlFor="password">Password</label> */}
                     <input
                       type="password"
                       id="password"
@@ -101,9 +100,6 @@ export default function Login() {
                       className="form-control form-control-lg"
                       placeholder="Enter password"
                     />
-                    <label className="form-label" htmlFor="form3Example4">
-                      Password
-                    </label>
                   </div>
 
                   <div className="text-center text-lg-start mt-4 pt-2">

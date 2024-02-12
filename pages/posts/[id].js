@@ -6,14 +6,13 @@ import {
   Button,
   useDisclosure,
   Textarea,
-
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import Layout from "@/layout";
 import { useQueries } from "@/hooks/useQueries";
@@ -36,7 +35,7 @@ export default function DetailPost() {
     setIsDelete(false);
   };
   const {
-    data, isLoading, isError, refetchData
+    data, isLoading, isError, refetchData,
   } = useQueries({
     prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/posts?type=me",
     headers: {
@@ -47,8 +46,7 @@ export default function DetailPost() {
   const HandleSubmit = async (idPost) => {
     try {
       const response = await mutate({
-        url:
-          `https://paace-f178cafcae7b.nevacloud.io/api/post/update/${idPost}`,
+        url: `https://paace-f178cafcae7b.nevacloud.io/api/post/update/${idPost}`,
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -148,11 +146,22 @@ export default function DetailPost() {
         <section id="services" className="pricing mt-5">
           <div className="container">
             <div className="section-title">
-              <h2>Halo {Detailme?.data?.email}</h2>
+              <h2>
+                Halo
+                {Detailme?.data?.email}
+              </h2>
               <p>
-                {Detailme?.data?.email} Kamu telah terdaftar pada pada{" "}
-                {formatDate(Detailme?.data?.created_at)} dan pernah di update
-                pada {formatDate(Detailme?.data?.updated_at)} dengan ini kami
+                {Detailme?.data?.email}
+                {" "}
+                Kamu telah terdaftar pada pada
+                {" "}
+                {formatDate(Detailme?.data?.created_at)}
+                {" "}
+                dan pernah di update
+                pada
+                {formatDate(Detailme?.data?.updated_at)}
+                {" "}
+                dengan ini kami
                 mengucapkan terima kasih atas partisipasinya pada aplikasi kami,
                 semoga kedepannya menjadi lebih baik :)
               </p>
@@ -178,13 +187,15 @@ export default function DetailPost() {
                   <div className="icon-box">
                     <div className="icon">
                       <button
-                        className="bi bi-trash m-2"
+                        type="button"
+                        aria-label="Hapus"
                         onClick={() => HandleDelete(item.id)}
-                      />
-                      <button
-                        className="bi bi-pencil-square m-2"
-                        onClick={() => ViewData(item.id)}
-                      />
+                      >
+                        <i className="bi bi-trash m-2" />
+                      </button>
+                      <button aria-label="Lihat" type="button" onClick={() => ViewData(item.id)}>
+                        <i className="bi bi-pencil-square m-2" />
+                      </button>
                     </div>
                     <h4 className="title mt-2">
                       <p href="">{item.user.email}</p>
@@ -207,11 +218,10 @@ export default function DetailPost() {
             <GridItem>
               <Textarea
                 value={textInput?.description || ""}
-                onChange={(event) =>
-                  setTextnput({
-                    ...textInput,
-                    description: event.target.value,
-                  })}
+                onChange={(event) => setTextnput({
+                  ...textInput,
+                  description: event.target.value,
+                })}
               />
             </GridItem>
           </ModalBody>
@@ -240,8 +250,10 @@ export default function DetailPost() {
           <ModalCloseButton />
           <ModalBody>
             <p>
-              Apakah Anda yakin untuk menghapus data "
-              {textInput?.description || ""}" ?
+              Apakah Anda yakin untuk menghapus data
+              {textInput?.description || ""}
+              {" "}
+              ?
             </p>
           </ModalBody>
 

@@ -1,22 +1,20 @@
-import { useToast ,
+import {
+  useToast,
   GridItem,
-  Text,
   Button,
   useDisclosure,
-  Textarea,
-,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton} from "@chakra-ui/react";
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-
 
 import { useMutation } from "@/hooks/useMutation";
 import { UserContect } from "@/context/userContact";
@@ -49,8 +47,7 @@ export default function Header() {
     if (userData) {
       setisLogin(true);
     }
-  }),
-  [];
+  }, []);
 
   const HandleLogout = async () => {
     const response = await mutate({
@@ -86,7 +83,7 @@ export default function Header() {
         isClosable: true,
         position: "top",
       });
-      location.reload();
+      window.location.reload();
     }
   };
   return (
@@ -102,7 +99,7 @@ export default function Header() {
                 <li>
                   <Link
                     className={`nav-link scrollto active ${
-                      activeLink == "/" ? "active" : ""
+                      activeLink === "/" ? "active" : ""
                     }`}
                     href="/"
                   >
@@ -112,22 +109,21 @@ export default function Header() {
                 <li>
                   <Link
                     className={`nav-link scrollto active ${
-                      activeLink == "/aboutme" ? "active" : ""
+                      activeLink === "/aboutme" ? "active" : ""
                     }`}
                     href="/aboutme"
                   >
                     Tentang Pengembang
                   </Link>
                 </li>
-                {isLogin === false ? (
-                  <></>
-                ) : (
+                {isLogin === true && (
                   <>
                     <li className="dropdown">
-                      <a href="#">
-                        <span>Pengaturan</span>{" "}
+                      <p type="button">
+                        <span>Pengaturan</span>
+                        {" "}
                         <i className="bi bi-chevron-down" />
-                      </a>
+                      </p>
                       <ul>
                         <li>
                           <Link href={`/posts/${userData?.email}`}>
@@ -135,7 +131,9 @@ export default function Header() {
                           </Link>
                         </li>
                         <li>
-                          <a onClick={() => notif()}>Notifikasi</a>
+                          <button type="button" onClick={() => notif()}>
+                            Notifikasi
+                          </button>
                         </li>
                       </ul>
                     </li>
@@ -155,12 +153,13 @@ export default function Header() {
                   </li>
                 ) : (
                   <li>
-                    <a
+                    <button
+                      type="button"
                       className="getstarted scrollto"
                       onClick={() => HandleLogout()}
                     >
                       Logout
-                    </a>
+                    </button>
                   </li>
                 )}
               </ul>
@@ -173,45 +172,51 @@ export default function Header() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-            <ModalHeader>Notif Kamu Hari Ini ges</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <GridItem>
-                <div
-                  className="list-group"
-                  style={{ maxHeight: "300px", overflowY: "auto" }}
-                >
-                  {/* start coment */}
-                  {dataList?.data?.map((item) => (
-                    <div className="">
-                      <a
-                        className={`list-group-item list-group-item-action flex-column align-items-start ${
-                          item.read ? "" : "bg-info"
-                        } `}
-                      >
-                        <div className="d-flex w-100 justify-content-between">
-                          <h5 className="mb-2 fw-bold">{item.user.name}</h5>
-                          <small>{item.user.email}</small>
-                        </div>
-                        <p className="mb-1">Bentuk : {item.remark}</p>
-                        <p className="mb-1">
-                          Postingan : {item.posts.description}
-                        </p>
-                      </a>
-                      <p />
-                    </div>
-                  ))}
-                  {/* end Comment */}
-                </div>
-              </GridItem>
-            </ModalBody>
+          <ModalHeader>Notif Kamu Hari Ini ges</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <GridItem>
+              <div
+                className="list-group"
+                style={{ maxHeight: "300px", overflowY: "auto" }}
+              >
+                {/* start coment */}
+                {dataList?.data?.map((item) => (
+                  <div className="">
+                    <button
+                      type="button"
+                      className={`list-group-item list-group-item-action flex-column align-items-start ${
+                        item.read ? "" : "bg-info"
+                      } `}
+                    >
+                      <div className="d-flex w-100 justify-content-between">
+                        <h5 className="mb-2 fw-bold">{item.user.name}</h5>
+                        <small>{item.user.email}</small>
+                      </div>
+                      <p className="mb-1">
+                        Bentuk :
+                        {item.remark}
+                      </p>
+                      <p className="mb-1">
+                        Postingan :
+                        {" "}
+                        {item.posts.description}
+                      </p>
+                    </button>
+                    <p />
+                  </div>
+                ))}
+                {/* end Comment */}
+              </div>
+            </GridItem>
+          </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
     </>
   );
